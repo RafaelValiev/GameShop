@@ -1,0 +1,9 @@
+C:\Users\Valiev.R\Documents\Visual Studio 2017\Projects\TestProjects.Services\Common\bin\Debug\TestProjects.Services.Common.dll
+C:\Users\Valiev.R\Documents\Visual Studio 2017\Projects\TestProjects.Services\Common\bin\Debug\TestProjects.Services.Common.pdb
+C:\Users\Valiev.R\Documents\Visual Studio 2017\Projects\TestProjects.Services\Common\bin\Debug\NLog.dll
+C:\Users\Valiev.R\Documents\Visual Studio 2017\Projects\TestProjects.Services\Common\bin\Debug\NLog.xml
+C:\Users\Valiev.R\Documents\Visual Studio 2017\Projects\TestProjects.Services\Common\obj\Debug\Common.csprojAssemblyReference.cache
+C:\Users\Valiev.R\Documents\Visual Studio 2017\Projects\TestProjects.Services\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\Valiev.R\Documents\Visual Studio 2017\Projects\TestProjects.Services\Common\obj\Debug\Common.csproj.CopyComplete
+C:\Users\Valiev.R\Documents\Visual Studio 2017\Projects\TestProjects.Services\Common\obj\Debug\TestProjects.Services.Common.dll
+C:\Users\Valiev.R\Documents\Visual Studio 2017\Projects\TestProjects.Services\Common\obj\Debug\TestProjects.Services.Common.pdb

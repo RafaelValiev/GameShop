@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="game_shop.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="gameShop" class="container pt-5">
+        <div class="row">
+            <div class="col">
+                <h1>
+                    Games Shop
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="search">
+                        Find game
+                    </label>
+                    <input 
+                           type="text" 
+                           class="form-control" 
+                           id="search" 
+                           placeholder="Title.."
+                           v-model="search"
+                           />
+                </div>
+                <hr>
+                <ul class="list-group">
+                    <li 
+                        v-for="(game,index) of filteredGames"
+                        class="list-group-item list-group-item-action"
+                        @click="selectGame(index)"
+                        :class="{'active': selectedGameIndex === index}"
+                        > 
+                        {{game.title}}
+                    </li>
+                </ul>
+                <hr>
+                <button class="btn btn-primary" @click="modalVisibility=true">Add Game..</button>
+            </div>
+            <div class="col-md-8 pt-3">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h2>
+                            {{game.title}}
+                        </h2>
+                        <h5>Game Details</h5>
+                        <ul>
+                            <li>Genre - <strong>{{game.genre}}</strong></li>
+                            <li>Developer - <strong>{{game.developer}}</strong></li>
+                            <li>IsAvailable - <strong>{{game.isAvailable}}</strong></li>
+                        </ul>
+                        <p>Date of release: {{game.releaseDate}}</p>
+                        <button class="btn btn-primary"  @click="deleteGame()">Delete Game</button>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade show gameshop_modal" v-if="modalVisibility" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Game</h5>
+                        <button 
+                                type="button" 
+                                class="close" 
+                                data-dismiss="modal" 
+                                aria-label="Close"
+                                @click="modalVisibility=false"
+                               >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Modal body text goes here.</p>
+
+                        <table class="table">
+                            <tbody>                                                       
+                                <tr>
+                                    <th scope="row">Title: </th>
+                                    <td>
+                                        <input type="text" class="form-control" id="newGameTitle" placeholder="Enter title..">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Description: </th>
+                                    <td>
+                                        <input type="text" class="form-control" id="newGameDescription" placeholder="Enter description..">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Genre: </th>
+                                    <td>
+                                        <select class="gameshop_select" v-model="newGameGenre">
+                                            <option v-for="genre in genres">
+                                                {{ genre }}
+                                            </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Developer: </th>
+                                    <td>
+                                        <template v-for="developer in developers">
+                                            <input type="radio" v-bind:value="developer" v-model=" newGameDeveloper">
+                                            <label>{{developer}}</label>
+                                            <br>
+                                        </template>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Release Date: </th>
+                                    <td>
+                                        <input type="date" class="gameshop_datepicker" id="newGameReleaseDate" value="2012-12-12"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Is Avaialble: </th>
+                                    <td>
+                                        <input type="checkbox" id="newGameAvailability" checked />
+                                    </td>
+                                </tr>                                
+                            </tbody>
+                        </table>                
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" @click="addGame()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fadem show" v-if="modalVisibility"></div>
+    </div>
+    <script type="text/javascript" src="game_shop.min.js"></script>
+</body>
+</html>
